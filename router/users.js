@@ -58,7 +58,7 @@ router.patch("/:id",async (req, res) => {
 router.delete("/:id",async (req, res) => {
   const { id } = req.params;
   try {
-    const rta = User.findByIdAndDelete(id)
+    const rta = await User.findByIdAndDelete(id)
     res.status(201).json({
       message:"Usuario eliminado"
     })

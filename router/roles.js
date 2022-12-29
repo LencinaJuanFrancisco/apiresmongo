@@ -20,7 +20,7 @@ router.get('/:id',async(req,res)=>{
     }
 })
 router.post('/',async(req,res)=>{
-    const data = req.params
+    const data = req.body
     try {
         const newRol = await new Rol(data)
         const saveRol = await newRol.save()
