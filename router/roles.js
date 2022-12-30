@@ -5,7 +5,8 @@ const {Rol} =require('./../db/Schemas/Roles')
 router.get('/',async(req,res)=>{
     try {
         const rta = await Rol.find()
-        res.status(200).json({message:"listado de Roles",Total:rta.length,rta})
+        rta.length > 0 ? res.status(200).json({message:"listado de Roles",Total:rta.length,rta})
+                       : res.status(200).json({message:"Ahun no hay registro"})
     } catch (error) {
         res.status(400).json({message:error.message})
     }
@@ -14,8 +15,11 @@ router.get('/:id',async(req,res)=>{
     const {id}= req.params
     try {
         const rta = await Rol.findById(id)
-        res.status(200).json(rta)
+        
+         res.status(200).json(rta)
+                    
     } catch (error) {
+        console.log(error);
         res.status(400).json({message:error.message})
     }
 })
