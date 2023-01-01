@@ -1,6 +1,8 @@
 const express = require("express");
+const { userValidation } = require("../validation/userValidation");
 const router = express.Router();
 const { User } = require("./../db/Schemas/Users");
+
 
 router.get("/", async (req, res) => {
   try {
@@ -17,7 +19,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/",async (req, res) => {
+router.post("/",userValidation,async (req, res) => {
     const data=req.body
   try {
     const newUser= await new User(data)

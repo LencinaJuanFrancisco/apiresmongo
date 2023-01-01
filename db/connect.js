@@ -13,7 +13,7 @@ mongoose.set('strictQuery', false)
 
 mongoose
   .connect(
-    "mongodb+srv://admin:adminadmin@cluster0.lxx7glu.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }
+   'mongodb+srv://admin:adminadmin@cluster0.lxx7glu.mongodb.net/?retryWrites=true&w=majority',
   )
   .then(
     (data) => {
