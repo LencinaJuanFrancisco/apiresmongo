@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {Task}= require('./../db/Schemas/Tasks')
+const {tasksValidation} = require('../validation/tasksValidation')
 
 router.get('/',async(req,res)=>{
     try {
@@ -31,7 +32,7 @@ router.get('/:id',async(req,res)=>{
     }
 })
 
-router.post('/',async(req,res)=>{
+router.post('/',tasksValidation,async (req,res)=>{
     const data = req.body
     try {
         const newTask = new Task(data)

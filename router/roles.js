@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {Rol} =require('./../db/Schemas/Roles')
+const {rolValidation} = require('../validation/rolValidation')
 
 router.get('/',async(req,res)=>{
     try {
@@ -23,7 +24,7 @@ router.get('/:id',async(req,res)=>{
         res.status(400).json({message:error.message})
     }
 })
-router.post('/',async(req,res)=>{
+router.post('/',rolValidation,async(req,res)=>{
     const data = req.body
     try {
         const newRol = await new Rol(data)
